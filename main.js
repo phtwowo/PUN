@@ -11,10 +11,10 @@
 const INITIAL_STORES = [
   {
     id: 's1',
-    name: '마르디 메크르디\nPOP-UP',
-    address: '성수동 1가',
-    lat: 37.5444,
-    lng: 127.0557,
+    name: '강원대 곰두리\nPOP-UP',
+    address: '강원대학교 정문 앞',
+    lat: 37.8668,
+    lng: 127.7384,
     crowd: '보통',
     waitTeams: 8,
     soldout: false,
