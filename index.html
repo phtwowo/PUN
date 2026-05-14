@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>팝업나우 · PUN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-pun">PUN</span>
+        <span class="logo-sub">팝업나우</span>
+      </div>
+      <div class="header-meta">
+        <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+        <span id="lastUpdated" class="last-updated">—</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN ── -->
+  <main>
+
+    <!-- 요약 통계 -->
+    <section class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-num" id="statTotal">0</span>
+        <span class="stat-label">운영 중</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="statCrowded">0</span>
+        <span class="stat-label">혼잡</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="statSoldout">0</span>
+        <span class="stat-label">품절 굿즈</span>
+      </div>
+    </section>
+
+    <!-- 대시보드 카드 리스트 -->
+    <section class="dashboard">
+      <div class="section-title-row">
+        <h2 class="section-title">실시간 현황</h2>
+        <button class="btn-refresh" id="btnRefresh" title="새로고침">↻ 새로고침</button>
+      </div>
+      <div class="card-grid" id="cardGrid">
+        <!-- JS로 렌더링 -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 제보 모달 트리거 ── -->
+  <button class="fab" id="fabReport" title="현장 제보하기">
+    <span class="fab-icon">＋</span>
+    <span class="fab-text">제보</span>
+  </button>
+
+  <!-- ── 제보 모달 ── -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="reportModal">
+      <div class="modal-header">
+        <h3 class="modal-title">현장 제보</h3>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- GPS 상태 -->
+        <div class="gps-status" id="gpsStatus">
+          <span class="gps-icon">◎</span>
+          <span id="gpsMsg">위치 확인 중…</span>
+        </div>
+
+        <!-- 매장 선택 -->
+        <label class="field-label">매장 선택</label>
+        <select class="field-select" id="selectStore">
+          <option value="">— 매장을 선택하세요 —</option>
+        </select>
+
+        <!-- 혼잡도 -->
+        <label class="field-label">현재 혼잡도</label>
+        <div class="crowd-btns" id="crowdBtns">
+          <button class="crowd-btn" data-value="여유">🟢 여유</button>
+          <button class="crowd-btn" data-value="보통">🟡 보통</button>
+          <button class="crowd-btn" data-value="혼잡">🔴 혼잡</button>
+        </div>
+
+        <!-- 대기 팀수 -->
+        <label class="field-label">대기 팀수</label>
+        <div class="number-input-row">
+          <button class="num-btn" id="numMinus">−</button>
+          <span class="num-display" id="numDisplay">0</span>
+          <button class="num-btn" id="numPlus">＋</button>
+          <span class="num-unit">팀</span>
+        </div>
+
+        <!-- 품절 토글 -->
+        <label class="field-label">굿즈 품절 여부</label>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="soldoutToggle" />
+          <span class="toggle-slider"></span>
+          <span class="toggle-text" id="toggleText">재고 있음</span>
+        </label>
+      </div>
+
+      <div class="modal-footer">
+        <p class="modal-notice" id="modalNotice"></p>
+        <button class="btn-submit" id="btnSubmit" disabled>제보 제출</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
